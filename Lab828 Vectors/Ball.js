@@ -1,10 +1,10 @@
 //start ball class (8/20)
+//Vectors
 class Ball{
   constructor(x,y,dx,dy,rx,ry){
-    this.x = x;
-    this.y = y;
-    this.dx = dx;
-    this.dy = dy;
+    this.loc = createVector(x,y);
+    this.vel = createVector(dx,dy);
+    this.acc = createVector(0,1);
     this.clr = color(random(255),random(255),random(255));
   }
 
@@ -17,26 +17,26 @@ class Ball{
   }
 
   checkEdges(){
-    if(this.x < 0){
-      this.dx = -this.dx;
+    if(this.loc.x < 0){
+      this.vel.x = -this.vel.x;
     }
-    if(this.x > width){
-      this.dx = -this.dx;
+    if(this.loc.x > width){
+      this.vel.x = -this.vel.x;
     }
-    if(this.y <0){
-      this.dy = -this.dy;
+    if(this.loc.y <0){
+      this.vel.y = -this.vel.y;
     }
-    if(this.y > height){
-      this.dy = -this.dy;
+    if(this.loc.y > height){
+      this.vel.y = -this.vel.y;
     }
   }
 
   update(){
-    this.x = this.x + this.dx;
-    this.y = this.y + this.dy;
+    this.vel.add(this.acc);
+    this.loc.add(this.vel);
   }
   render(){
     fill(this.clr);
-    ellipse(this.x,this.y,20,20)
+    ellipse(this.loc.x,this.loc.y,20,20)
   }
 }// end ball class
