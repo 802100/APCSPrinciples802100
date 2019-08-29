@@ -3,15 +3,15 @@
 //  This is a comment
 var balls = []
 var rects = []
-var triangles = []
+var tris = []
 //  The setup function function is called once when your program begins
 function setup() {
   var cnv = createCanvas(800, 800);
   cnv.position((windowWidth-width)/2, 30);
   background(5, 5, 5);
-  loadBalls(50);
-  loadRects(20);
-  //loadTriangles(20);
+  loadBalls(0);
+  loadRects(0);
+  loadTris(20);
 
 
 }
@@ -21,6 +21,7 @@ function draw() {
   background(5, 5, 5);
   runBalls();
   runRects();
+  runTris();
 
 
 
@@ -51,3 +52,14 @@ function runRects(){
   }
 }
 //load triangles
+function loadTris(n){
+  for(var i = 0; i < n; i++){
+    tris[i] = new Triangle(random(50,200),random(50,200),random(50,200),random(50,200),random(50,200),random(50,200),random(-8,8),random(-8,8));
+  }
+}
+
+function runTris(){
+  for(var i = 0; i < tris.length; i++){
+    tris[i].run();
+  }
+}
