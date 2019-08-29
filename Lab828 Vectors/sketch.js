@@ -9,8 +9,8 @@ function setup() {
   var cnv = createCanvas(800, 800);
   cnv.position((windowWidth-width)/2, 30);
   background(5, 5, 5);
-  loadBalls(0);
-  loadRects(0);
+  loadBalls(20);
+  loadRects(20);
   loadTris(20);
 
 
@@ -52,9 +52,11 @@ function runRects(){
   }
 }
 //load triangles
+//random(50,150),random(50,150),random(50,150),random(50,150),random(50,150),random(50,150)
+//20,60,10,80,30,80
 function loadTris(n){
   for(var i = 0; i < n; i++){
-    tris[i] = new Triangle(random(50,200),random(50,200),random(50,200),random(50,200),random(50,200),random(50,200),random(-8,8),random(-8,8));
+    tris[i] = new Triangle(random(width),random(height),random(width),random(height),random(width),random(height),random(-8,8),random(-8,8));
   }
 }
 
