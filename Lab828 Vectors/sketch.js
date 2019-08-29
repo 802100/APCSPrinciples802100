@@ -18,7 +18,7 @@ function setup() {
 
 //  The draw function is called @ 30 fps
 function draw() {
-  background(5, 5, 5);
+  background(5, 5, 5, 40);
   runBalls();
   runRects();
   runTris();
@@ -52,11 +52,12 @@ function runRects(){
   }
 }
 //load triangles
-//random(50,150),random(50,150),random(50,150),random(50,150),random(50,150),random(50,150)
-//20,60,10,80,30,80
+//random(50,150),random(50,150),random(50,150),random(50,150),random(50,150),random(50,150)[new triangle]
+//random(width),random(height),random(width),random(height),random(width),random(height)[new triangle]
+//20,60,10,80,30,80[new triangle]
 function loadTris(n){
   for(var i = 0; i < n; i++){
-    tris[i] = new Triangle(random(width),random(height),random(width),random(height),random(width),random(height),random(-8,8),random(-8,8));
+    tris[i] = new Triangle(20,60,random(-8,8),random(-8,8));
   }
 }
 
