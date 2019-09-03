@@ -1,10 +1,11 @@
 //start ball class (8/20)
 //Vectors
 class Ball{
-  constructor(x,y,dx,dy,rx,ry){
+  constructor(x,y,dx,dy,id){
     this.loc = createVector(x,y);
     this.vel = createVector(dx,dy);
     this.acc = createVector(0,0.50);
+    this.id = id;
     this.clr = color(random(255),random(255),random(255));
   }
 
@@ -32,7 +33,21 @@ class Ball{
   }
 
   update(){
+    var distToMainBall;
+    if(this.id >= 0){
+      distToMainBall = this.loc.dist(mainBall.loc);
+      if(distToMainBall < 250){
+        //add atraction
+        this.acc = p5.Vector.sub(mianBall.loc, this.loc);
+        this.acc.normalize();
+        this.acc.mult(0,1);
+      }
+      if(distToMainBall < 150){
+        //add atraction
+      }
+    }
     this.vel.add(this.acc);
+    this.vel.limit(5);
     this.loc.add(this.vel);
   }
   render(){
