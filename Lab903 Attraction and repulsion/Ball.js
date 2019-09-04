@@ -4,9 +4,14 @@ class Ball{
   constructor(x,y,dx,dy,id){
     this.loc = createVector(x,y);
     this.vel = createVector(dx,dy);
-    this.acc = createVector(0,0.50);
+    this.acc = createVector(0,1);
     this.id = id;
     this.clr = color(random(255),random(255),random(255));
+    this.w = 20;
+    if(this.id < 0){
+      this.clr = color(255);
+      this.w = 50;
+    }
   }
 
   run(){
@@ -38,9 +43,9 @@ class Ball{
       distToMainBall = this.loc.dist(mainBall.loc);
       if(distToMainBall < 250){
         //add atraction
-        this.acc = p5.Vector.sub(mianBall.loc, this.loc);
+        this.acc = p5.Vector.sub(mainBall.loc, this.loc);
         this.acc.normalize();
-        this.acc.mult(0,1);
+        this.acc.mult(0.1);
       }
       if(distToMainBall < 150){
         //add atraction
@@ -48,14 +53,14 @@ class Ball{
         this.acc.normalize();
         this.acc.mult(0.1);
       }
-      
+
     }
     this.vel.add(this.acc);
-    this.vel.limit(5);
+    this.vel.limit();
     this.loc.add(this.vel);
   }
   render(){
     fill(this.clr);
-    ellipse(this.loc.x,this.loc.y,20,20)
+    ellipse(this.loc.x,this.loc.y,this.w,this.w)
   }
 }// end ball class

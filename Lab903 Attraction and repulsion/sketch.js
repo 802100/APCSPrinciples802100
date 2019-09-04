@@ -21,8 +21,8 @@ function setup() {
 function draw() {
   background(5, 5, 5, 40);
   runBalls();
-  runRects();
-  runTris();
+//  runRects();
+//  runTris();
 
 
 
@@ -30,7 +30,8 @@ function draw() {
 }
 //load balls
 function loadBalls(n){
-  mainball = new Ball(width/2, height/2, random(-1,1), random(-1,1), -1);
+  mainBall = new Ball(width/2, height/2, random(-1,1), random(-1,1), -1);
+  console.log(mainBall);
   for(var i = 0; i < n; i++){
     balls[i] = new Ball(random(width),random(height),random(-8,8),random(-8,8), i);
   }
