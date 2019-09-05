@@ -6,13 +6,13 @@ class Ball{
     this.vel = createVector(dx,dy);
     this.acc = createVector(0,1);
     this.id = id;
-    this.clr = color(random(255),random(255),random(255));
     this.w = 20;
-    if(this.id < 0){
-      this.clr = color(255);
+    this.clr = color(random(255),random(255),random(255));
+
+    if(id < 0){
+      this.clr = (255);
       this.w = 50;
     }
-  }
 
   run(){
     this.checkEdges();
@@ -56,11 +56,11 @@ class Ball{
 
     }
     this.vel.add(this.acc);
-    this.vel.limit();
+    //this.vel.limit();
     this.loc.add(this.vel);
   }
   render(){
     fill(this.clr);
-    ellipse(this.loc.x,this.loc.y,this.w,this.w)
+    ellipse(this.loc.x,this.loc.y,this.w,this.w);
   }
 }// end ball class
