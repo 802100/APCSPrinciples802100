@@ -22,7 +22,7 @@ function draw() {
   background(5, 5, 5, 40);
   runBalls();
   runRects();
-  runTris();
+  //runTris();
 
 
 
@@ -31,7 +31,7 @@ function draw() {
 //load balls
 function loadBalls(n){
   mainBall = new Ball(width/2, height/2, random(-1,1), random(-1,1), -1);
-  console.log(mainBall);
+
   for(var i = 0; i < n; i++){
     balls[i] = new Ball(random(width),random(height),random(-8,8),random(-8,8), i);
   }
@@ -46,7 +46,7 @@ function runBalls(){
 //load rects
 function loadRects(n){
   for(var i = 0; i < n; i++){
-    rects[i] = new Rect(random(width),random(height),random(-8,8),random(-8,8));
+    rects[i] = new Rect(random(width),random(height),random(-8,8),random(-8,8), i);
   }
 }
 
@@ -56,9 +56,6 @@ function runRects(){
   }
 }
 //load triangles
-//random(50,150),random(50,150),random(50,150),random(50,150),random(50,150),random(50,150)[new triangle]
-//random(width),random(height),random(width),random(height),random(width),random(height)[new triangle]
-//20,60,10,80,30,80[new triangle]
 function loadTris(n){
   for(var i = 0; i < n; i++){
     tris[i] = new Triangle(20,60,random(-8,8),random(-8,8));
