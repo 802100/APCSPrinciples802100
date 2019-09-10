@@ -31,7 +31,8 @@ function draw() {
 }
 //load balls
 function loadBalls(n){
-  atBall = new Ball(width/2, height/2, random(-1,1), random(-1,1), -1);
+  atBall = new Ball(width/2, height/2, random(-1,1), random(-1,1), -2);
+  repBall = new Ball(width/2, height/2, random(-1,1), random(-1,1), -1);
 
   for(var i = 0; i < n; i++){
     balls[i] = new Ball(random(width),random(height),random(-8,8),random(-8,8), i);
@@ -40,6 +41,7 @@ function loadBalls(n){
 
 function runBalls(){
   atBall.run();
+  repBall.run();
   for(var i = 0; i < balls.length; i++){
     balls[i].run();
   }

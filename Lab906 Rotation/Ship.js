@@ -25,25 +25,29 @@ class Ship{
 
   update(){
     var distToAtBall;
+    var distToRepBall;
     if(this.id >= 0){
-      distToMainBall = this.loc.dist(mainBall.loc);
-      if(distToMainBall < 450){
+      distToAtBall = this.loc.dist(atBall.loc);
+      distToRepBall = this.loc.dist(repBall.loc);
+      if(distToAtBall < 450){
         //add atraction
-        this.acc = p5.Vector.sub(mainBall.loc, this.loc);
+        this.acc = p5.Vector.sub(atBall.loc, this.loc);
         this.acc.normalize();
-        this.acc.mult(0.1);
+        this.acc.mult(0.2);
       }
-      if(distToMainBall < 150){
+      if(distToRepBall < 150){
         //add atraction
-        this.acc = p5.Vector.sub( this.loc, mainBall.loc);
+        this.acc = p5.Vector.sub( this.loc, repBall.loc);
         this.acc.normalize();
         this.acc.mult(0.5);
       }
 
     }
+
     this.vel.add(this.acc);
     this.vel.limit(4);
     this.loc.add(this.vel);
+
   }
 
   render(){
@@ -51,7 +55,7 @@ class Ship{
     push();
     translate(this.loc.x, this.loc.y);
     this.angle = this.angle + .1;
-    rotate(this.angle);
+    rotate(this.angle.heading());
     triangle(-5,8,5,8,0,-8);
     pop();
   }
