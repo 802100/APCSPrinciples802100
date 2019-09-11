@@ -6,6 +6,7 @@ class Ship{
     this.vel = createVector(dx,dy);
     this.id = id;
     this.angle = 0;
+    v1 = this.angle + 1
     this.clr = color(random(255),random(255),random(255));
   }
 
@@ -55,7 +56,7 @@ class Ship{
     push();
     translate(this.loc.x, this.loc.y);
     this.angle = this.angle + .1;
-    rotate(this.angle.heading());
+    rotate(v1.heading());
     triangle(-5,8,5,8,0,-8);
     pop();
   }
