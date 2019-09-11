@@ -48,6 +48,9 @@ class Ship{
     this.vel.limit(4);
     this.loc.add(this.vel);
 
+    //set heading
+    rotate(this.vel.heading());
+
   }
 
   render(){
@@ -55,9 +58,11 @@ class Ship{
     push();
     translate(this.loc.x, this.loc.y);
     this.angle = this.angle + .1;
-    rotate(this.angle);
+    rotate(this.vel.heading());
     triangle(-5,8,5,8,0,-8);
     pop();
+
+
   }
 
 
