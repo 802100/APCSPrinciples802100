@@ -6,7 +6,6 @@ class Ship{
     this.vel = createVector(dx,dy);
     this.id = id;
     this.angle = 0;
-    v1 = this.angle + 1
     this.clr = color(random(255),random(255),random(255));
   }
 
@@ -34,7 +33,7 @@ class Ship{
         //add atraction
         this.acc = p5.Vector.sub(atBall.loc, this.loc);
         this.acc.normalize();
-        this.acc.mult(0.2);
+        this.acc.mult(0.1);
       }
       if(distToRepBall < 150){
         //add atraction
@@ -56,7 +55,7 @@ class Ship{
     push();
     translate(this.loc.x, this.loc.y);
     this.angle = this.angle + .1;
-    rotate(v1.heading());
+    rotate(this.angle);
     triangle(-5,8,5,8,0,-8);
     pop();
   }
