@@ -62,7 +62,7 @@ function runRects(){
 //load ships
 function loadShips(n){
   for(var i = 0; i < n; i++){
-    ships[i]= new Ship(random(width),random(height),random(-8,8),random(-8,8),i);
+    ships[i]= new Ship(random(width),random(height),random(-8,8),random(-8,8), i);
   }
 }
 

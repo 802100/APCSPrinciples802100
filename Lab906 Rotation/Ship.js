@@ -44,12 +44,11 @@ class Ship{
 
     }
 
+
     this.vel.add(this.acc);
     this.vel.limit(4);
     this.loc.add(this.vel);
 
-    //set heading
-    rotate(this.vel.heading());
 
   }
 
