@@ -3,16 +3,17 @@
 //  This is a comment
 var balls = []
 var rects = []
-var ships = []
+var paddles = []
 
 //  The setup function function is called once when your program begins
 function setup() {
   var cnv = createCanvas(800, 800);
   cnv.position((windowWidth-width)/2, 30);
   background(5, 5, 5);
-  loadBalls(0);
+  loadBalls(10);
   loadRects(0);
-  loadShips(20);
+  loadPaddles(1);
+
 
 
 }
@@ -22,7 +23,7 @@ function draw() {
   background(5, 5, 5, 40);
   runBalls();
   runRects();
-  runShips();
+  runPaddles();
 
 
 
@@ -44,7 +45,7 @@ function runBalls(){
 //load rects
 function loadRects(n){
   for(var i = 0; i < n; i++){
-    rects[i] = new Rect(mouseX,700,random(-8,8),random(-8,8));
+    rects[i] = new Rect(mouseX, mouseY, 80, 10);
   }
 }
 
@@ -54,15 +55,14 @@ function runRects(){
   }
 }
 
-//load ships
-function loadShips(n){
+function loadPaddles(n){
   for(var i = 0; i < n; i++){
-    ships[i]= new Ship(random(width),random(height),random(-8,8),random(-8,8), i);
+    paddles[i] = new Paddle(400,700,80,10);
   }
 }
 
-function runShips(){
-  for(var i = 0; i < ships.length; i++){
-    ships[i].run();
+function runPaddles(){
+  for(var i = 0; i < paddles.length; i++){
+    paddles[i].run();
   }
 }

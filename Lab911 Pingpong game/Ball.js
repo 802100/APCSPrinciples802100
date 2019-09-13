@@ -10,7 +10,6 @@ class Ball{
 
 
     }
-  }
 
   run(){
     this.checkEdges();

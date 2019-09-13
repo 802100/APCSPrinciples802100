@@ -1,10 +1,9 @@
 //start rect class (8/20)
 class Rect{
-  constructor(x,y,dx,dy,id){
+  constructor(x,y,w,h){
     this.loc = createVector(x,y);
-    this.vel = createVector(dx,dy);
+    this.size = createVector(w,h);
     this.acc = createVector(0,0);
-    this.id = id;
     this.clr = color(random(255),random(255),random(255));
   }
 
@@ -31,29 +30,13 @@ class Rect{
   }
 
   update(){
-    var distToMainBall;
-    if(this.id >= 0){
-      distToMainBall = this.loc.dist(mainBall.loc);
-      if(distToMainBall < 450){
-        //add atraction
-        this.acc = p5.Vector.sub(mainBall.loc, this.loc);
-        this.acc.normalize();
-        this.acc.mult(0.1);
-      }
-      if(distToMainBall < 150){
-        //add atraction
-        this.acc = p5.Vector.sub( this.loc, mainBall.loc);
-        this.acc.normalize();
-        this.acc.mult(0.5);
-      }
+    var mouseLoc = createVector(mouseX,mouseY);
+    this.loc = p5.Vector.lerp(this.loc, mouseLoc, .09);
 
-    }
-    this.vel.add(this.acc);
-    this.vel.limit(4);
-    this.loc.add(this.vel);
   }
+
   render(){
     fill(this.clr);
-    rect(this.loc.x,this.loc.y,20,20)
+    rect(this.loc.x,this.loc.y,this.size.w, this.size.h);
   }
 }// end rect class
