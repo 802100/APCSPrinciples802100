@@ -1,4 +1,4 @@
-//start rect class (8/20)
+//start Paddle class (8/20)
 class Paddle{
   constructor(x,y,w,h){
     this.loc = createVector(x,y);
@@ -14,17 +14,8 @@ class Paddle{
   }
 
   checkEdges(){
-    //colliding with ball?
-    function isColliding(){
-      if(this.loc.x>paddle.loc.x &&
-        this.loc.x<paddle.loc.x + w &&
-        this.loc.y>paddle.loc.y &&
-        this.loc.y<paddle.loc.y + h){
-          return true;
-        }else{
-          return false;
-        }
-    }
+
+
   }
 
 
@@ -36,6 +27,6 @@ class Paddle{
 
   render(){
     fill(this.clr);
-    rect(this.loc.x,this.loc.y,this.w, this.h);
+    rect(this.loc.x,this.loc.y,this.size.w,this.size.h);
   }
-}// end rect class
+}// end Paddle class
