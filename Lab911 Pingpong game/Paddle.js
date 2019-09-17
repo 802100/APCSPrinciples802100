@@ -20,13 +20,15 @@ class Paddle{
 
 
   update(){
+    // console.log("movement");
     var mouseLoc = createVector(mouseX,mouseY);
     this.loc = p5.Vector.lerp(this.loc, mouseLoc, .09);
 
   }
 
   render(){
-    fill(this.clr);
+    // console.log("hi");
+    fill(255);
     rect(this.loc.x,this.loc.y,this.size.w,this.size.h);
   }
 }// end Paddle class

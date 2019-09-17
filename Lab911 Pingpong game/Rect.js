@@ -2,7 +2,7 @@
 class Rect{
   constructor(x,y,w,h){
     this.loc = createVector(x,y);
-    this.size = createVector(w,h);
+    this.vel = createVector(w,h);
     this.acc = createVector(0,0);
     this.clr = color(random(255),random(255),random(255));
   }
@@ -30,13 +30,12 @@ class Rect{
   }
 
   update(){
-    var mouseLoc = createVector(mouseX,mouseY);
-    this.loc = p5.Vector.lerp(this.loc, mouseLoc, .09);
+    this.loc.add(this.vel)
 
   }
 
   render(){
     fill(this.clr);
-    rect(this.loc.x,this.loc.y,this.size.w, this.size.h);
+    rect(this.loc.x,this.loc.y,20,20);
   }
 }// end rect class

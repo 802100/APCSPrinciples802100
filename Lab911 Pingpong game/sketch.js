@@ -2,15 +2,18 @@
 // 	8/20/19
 //  This is a comment
 var balls = []
+var rects = [];
 var paddle;
+var gameState = 1;
 
 //  The setup function function is called once when your program begins
 function setup() {
   var cnv = createCanvas(800, 800);
   cnv.position((windowWidth-width)/2, 30);
-  background(5, 5, 5);
+  // background(5, 5, 5);
   loadBalls(10);
   loadPaddles();
+  loadRects(10);
 
 
 
@@ -18,15 +21,34 @@ function setup() {
 
 //  The draw function is called @ 30 fps
 function draw() {
-  background(5, 5, 5, 40);
+  if(gameState === 1){
+    startGame();
+  }else if(gameState === 2){
+    playGame();
+  }else if(gameState === 3){
+    endGame();
+  }
+  // background(5, 5, 5, 40);
   runBalls();
   runPaddles();
-
-
-
+  runRects();
 
 
 }
+//sart Game screen
+function startGame(){
+  background(0);
+}
+//play game screen
+function playGame(){
+  background(255,0,0);
+}
+//end game scren
+function endGame(){
+  background(5, 5, 5, 40);
+}
+
+
 //load balls
 function loadBalls(n){
 
@@ -38,6 +60,18 @@ function loadBalls(n){
 function runBalls(){
   for(var i = 0; i < balls.length; i++){
     balls[i].run();
+  }
+}
+
+function loadRects(n){
+  for(var i = 0; i < n; i++){
+    rects[i] = new Rect(random(width),random(height),random(-8,8),random(-8,8))
+  }
+}
+
+function runRects(){
+  for(var i = 0; i < rect.length; i++){
+    rects[i].run();
   }
 }
 
