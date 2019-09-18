@@ -7,6 +7,7 @@ class Paddle{
   }
 
   run(){
+    // console.log("running");
     this.checkEdges();
     this.update();
     this.render();
@@ -27,7 +28,7 @@ class Paddle{
   }
 
   render(){
-    // console.log("hi");
+    // console.log("render");
     fill(255);
     rect(this.loc.x,this.loc.y,this.size.w,this.size.h);
   }

@@ -5,7 +5,7 @@ class Rect{
     this.vel = createVector(w,h);
     this.acc = createVector(0,0);
     this.clr = color(random(255),random(255),random(255));
-  }
+    }
 
   run(){
     this.checkEdges();

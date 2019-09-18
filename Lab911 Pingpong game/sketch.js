@@ -80,5 +80,6 @@ function loadPaddles(){
 }
 
 function runPaddles(){
+  // console.log("inside runPaddles");
   paddle.run();
 }
