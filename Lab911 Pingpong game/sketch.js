@@ -2,7 +2,6 @@
 // 	8/20/19
 //  This is a comment
 var balls = []
-var rects = [];
 var paddle;
 var gameState = 1;
 
@@ -13,7 +12,6 @@ function setup() {
   // background(5, 5, 5);
   loadBalls(10);
   loadPaddles();
-  loadRects(10);
 
 
 
@@ -31,7 +29,6 @@ function draw() {
   // background(5, 5, 5, 40);
   runBalls();
   runPaddles();
-  runRects();
 
 
 }
@@ -60,18 +57,6 @@ function loadBalls(n){
 function runBalls(){
   for(var i = 0; i < balls.length; i++){
     balls[i].run();
-  }
-}
-
-function loadRects(n){
-  for(var i = 0; i < n; i++){
-    rects[i] = new Rect(random(width),random(height),random(-8,8),random(-8,8))
-  }
-}
-
-function runRects(){
-  for(var i = 0; i < rect.length; i++){
-    rects[i].run();
   }
 }
 
