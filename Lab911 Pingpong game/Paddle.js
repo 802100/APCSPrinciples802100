@@ -3,7 +3,6 @@ class Paddle{
   constructor(x,y,w,h){
     this.loc = createVector(x,y);
     this.size = createVector(w,h);
-    this.clr = color(255);
   }
 
   run(){
@@ -22,13 +21,13 @@ class Paddle{
 
   update(){
     // console.log("movement");
-    var mouseLoc = createVector(mouseX,700);
+    var mouseLoc = createVector(mouseX-40,700);
     this.loc = p5.Vector.lerp(this.loc, mouseLoc, .09);
 
     if(this.loc.x < 0){
       this.loc.x = -this.loc.x;
     }
-    if(this.loc.x > width-80){
+    if(this.loc.x > 720){
       this.loc.x = -this.loc.x;
     }
 
@@ -36,7 +35,7 @@ class Paddle{
 
   render(){
     // console.log("render");
-    fill(255);
+    fill(255,0,0);
     rect(this.loc.x,this.loc.y,80,20);
   }
 }// end Paddle class

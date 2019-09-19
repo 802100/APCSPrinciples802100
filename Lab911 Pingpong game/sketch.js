@@ -26,7 +26,7 @@ function draw() {
   }else if(gameState === 3){
     endGame();
   }
-  // background(5, 5, 5, 40);
+//edit out when finished fixing isCollinding
   runBalls();
   runPaddles();
 
@@ -39,10 +39,13 @@ function startGame(){
 //play game screen
 function playGame(){
   background(255,0,0);
+  runBalls();
+  runPaddles();
 }
 //end game scren
 function endGame(){
   background(5, 5, 5, 40);
+
 }
 
 

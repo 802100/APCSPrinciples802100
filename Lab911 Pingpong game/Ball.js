@@ -21,8 +21,8 @@ class Ball{
 
   checkEdges(){
     //colliding with ball?
+    console.log();
     function isColliding(){
-      console.log("inside collide");
       if(this.loc.x>paddle.loc.x &&
         this.loc.x<paddle.loc.x + w &&
         this.loc.y>paddle.loc.y &&
@@ -56,6 +56,7 @@ class Ball{
   }
 
   update(){
+
 
     this.vel.add(this.acc);
     this.vel.limit(4);
