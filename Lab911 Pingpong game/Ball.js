@@ -21,12 +21,11 @@ class Ball{
 
   checkEdges(){
     //colliding with ball?
-    console.log();
     function isColliding(){
       if(this.loc.x>paddle.loc.x &&
-        this.loc.x<paddle.loc.x + w &&
+        this.loc.x<paddle.loc.x + paddle.w &&
         this.loc.y>paddle.loc.y &&
-        this.loc.y<paddle.loc.y + h){
+        this.loc.y<paddle.loc.y + paddle.h){
           return true;
         }else{
           return false;
@@ -35,7 +34,8 @@ class Ball{
 
     for(var i = balls.length -1; balls >= 0; i--){
       if(balls[i].isColliding()){
-        balls.splice(i,1);
+        this.vel.y = -this.vel.y
+        //balls.splice(i,1)
       }
     }
 

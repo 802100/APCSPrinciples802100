@@ -5,6 +5,7 @@ var balls = []
 var paddle;
 var gameState = 1;
 
+
 //  The setup function function is called once when your program begins
 function setup() {
   var cnv = createCanvas(800, 800);
@@ -34,17 +35,17 @@ function draw() {
 }
 //sart Game screen
 function startGame(){
-  background(0);
+  background(50,50,50);
 }
 //play game screen
 function playGame(){
-  background(255,0,0);
+  background(0);
   runBalls();
   runPaddles();
 }
 //end game scren
 function endGame(){
-  background(5, 5, 5, 40);
+  background(50,50,50);
 
 }
 

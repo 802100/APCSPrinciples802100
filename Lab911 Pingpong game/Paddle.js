@@ -3,6 +3,8 @@ class Paddle{
   constructor(x,y,w,h){
     this.loc = createVector(x,y);
     this.size = createVector(w,h);
+    this.w = 80;
+    this.h = 20;
   }
 
   run(){
