@@ -4,8 +4,10 @@
 var balls = []
 var paddle;
 var gameState = 1;
+var mode = "easy";
 var difficulty = 0;
-var n = 5;
+var w = 80;
+var h = 20;
 var lives = 10;
 
 
@@ -14,7 +16,7 @@ function setup() {
   var cnv = createCanvas(800, 800);
   cnv.position((windowWidth-width)/2, 30);
   // background(5, 5, 5);
-  loadBalls(n);
+  loadBalls(10);
   loadPaddles();
 
 
@@ -30,12 +32,9 @@ function draw() {
   }else if(gameState === 3){
     endGame();
   }
-//edit out when finished fixing isCollinding
-  // runBalls();
-  // runPaddles();
-
 
 }
+
 //sart Game screen
 function startGame(){
   background(50,50,50);
@@ -61,20 +60,24 @@ function startGame(){
   if(mouseIsPressed &&
     mouseX>200 && mouseX<280 &&
     mouseY>600 && mouseY<640){
+      mode = "easy";
       gameState = 2;
     }
   if(mouseIsPressed &&
     mouseX>350 && mouseX<430 &&
     mouseY>600 && mouseY<640){
+      mode = "med";
       gameState = 2;
     }
   if(mouseIsPressed &&
     mouseX>500 && mouseX<580 &&
     mouseY>600 && mouseY<640){
+      mode = "hard";
       gameState = 2;
     }
 
 }
+
 //play game screen
 function playGame(){
   background(0);
@@ -87,6 +90,20 @@ function playGame(){
 //end game scren
 function endGame(){
   background(50,50,50);
+  //title
+  textSize(50);
+  fill(255);
+  text("PaddleBall",270,200);
+  //new game?
+  textSize(30);
+  fill(250,0,250);
+  rect(300,600,80,50);
+  fill(255);
+  text("New Game",315,625);
+  fill(255,0,0);
+  rect(300,600,80,50);
+  fill(255);
+  text("Quit",315,625);
 
 }
 
@@ -106,7 +123,7 @@ function runBalls(){
 }
 
 function loadPaddles(){
-  paddle = new Paddle(400,700,80,20);
+  paddle = new Paddle(400,700,w,h);
 }
 
 function runPaddles(){

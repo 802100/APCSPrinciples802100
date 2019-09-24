@@ -33,11 +33,20 @@ class Paddle{
       this.loc.x = -this.loc.x;
     }
 
+    if(gameState === 2 && mode === "easy"){
+      this.w = 90;
+    }
+    if(gameState === 2 && mode === "med"){
+      this.w = 70;
+    }
+    if(gameState === 2 && mode === "hard"){
+      this.w = 60;
+    }
+
   }
 
   render(){
-    // console.log("render");
     fill(255,0,0);
-    rect(this.loc.x,this.loc.y,80,20);
+    rect(this.loc.x,this.loc.y,this.w,this.h);
   }
 }// end Paddle class
