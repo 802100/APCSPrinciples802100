@@ -16,31 +16,30 @@ class Paddle{
   }
 
   checkEdges(){
-
+    if(this.loc.x < 0){
+      this.loc.x = -this.loc.x;
+    }
+    if(this.loc.x > 720){
+      this.loc.x = 710;
+    }
 
   }
 
 
   update(){
     // console.log("movement");
-    var mouseLoc = createVector(mouseX-40,700);
+    var mouseLoc = createVector(mouseX-50,700);
     this.loc = p5.Vector.lerp(this.loc, mouseLoc, .09);
 
-    if(this.loc.x < 0){
-      this.loc.x = -this.loc.x;
-    }
-    if(this.loc.x > 720){
-      this.loc.x = -this.loc.x;
-    }
 
     if(gameState === 2 && mode === "easy"){
-      this.w = 90;
+      this.w = 100;
     }
     if(gameState === 2 && mode === "med"){
-      this.w = 70;
+      this.w = 90;
     }
     if(gameState === 2 && mode === "hard"){
-      this.w = 60;
+      this.w = 70;
     }
 
   }

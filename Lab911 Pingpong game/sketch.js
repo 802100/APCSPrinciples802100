@@ -4,12 +4,10 @@
 //this is a coment
 var balls = []
 var paddle;
-var gameState = 1;
+var gameState = 3;
 var mode = "easy";
-var difficulty = 0;
-var w = 80;
-var h = 20;
 var lives = 10;
+var score = 0;
 
 
 //  The setup function function is called once when your program begins
@@ -82,9 +80,10 @@ function startGame(){
 //play game screen
 function playGame(){
   background(0);
-  textSize(10);
+  textSize(20);
   fill(255);
   text("lives = " + lives,20,20);
+  text("score = " + score,200,20);
   runBalls();
   runPaddles();
 }
@@ -98,13 +97,27 @@ function endGame(){
   //new game?
   textSize(30);
   fill(250,0,250);
-  rect(300,600,80,50);
+  rect(190,600,190,50);
   fill(255);
-  text("New Game",315,625);
+  text("New Game",210,635);
   fill(255,0,0);
-  rect(300,600,80,50);
+  rect(440,600,80,50);
   fill(255);
-  text("Quit",315,625);
+  text("Quit",450,635);
+
+  if(mouseIsPressed &&
+    mouseX>190 && mouseX<380 &&
+    mouseY>600 && mouseY<650){
+      gameState = 1;
+      lives = 10;
+      score = 0;
+    }else if(mouseIsPressed &&
+      mouseX>440 && mouseX<520 &&
+      mouseY>600 && mouseY<650){
+        textSize(50);
+        fill(255);
+        text("Thanks For Playing",160,400);
+      }
 
 }
 
@@ -113,7 +126,7 @@ function endGame(){
 function loadBalls(n){
 
   for(var i = 0; i < n; i++){
-    balls[i] = new Ball(random(width),random(height),random(-8,8),random(-8,8), i);
+    balls[i] = new Ball(random(width),200,random(-8,8),random(-8,8), i);
   }
 }
 
@@ -124,7 +137,7 @@ function runBalls(){
 }
 
 function loadPaddles(){
-  paddle = new Paddle(400,700,w,h);
+  paddle = new Paddle(400,700,100,20);
 }
 
 function runPaddles(){

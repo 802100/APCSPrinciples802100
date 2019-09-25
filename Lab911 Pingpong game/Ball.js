@@ -4,7 +4,7 @@ class Ball{
   constructor(x,y,dx,dy){
     this.loc = createVector(x,y);
     this.vel = createVector(dx,dy);
-    this.acc = createVector(0,0);
+    this.acc = createVector(0,0.1);
     this.w = 20;
     this.clr = color(random(255),random(255),random(255));
 
@@ -26,16 +26,16 @@ class Ball{
         this.loc.x<paddle.loc.x + paddle.w &&
         this.loc.y>paddle.loc.y &&
         this.loc.y<paddle.loc.y + paddle.h){
-          lives = lives - 1;
           return true;
         }else{
           return false;
         }
     }
-
+    
     for(var i = balls.length -1; balls >= 0; i--){
       if(balls[i].isColliding()){
         // this.vel.y = -this.vel.y
+        score = score + 1;
         balls.splice(i,1)
       }
     }
@@ -60,7 +60,6 @@ class Ball{
 
 
     this.vel.add(this.acc);
-    this.vel.limit(4);
     this.loc.add(this.vel);
   }
   render(){
