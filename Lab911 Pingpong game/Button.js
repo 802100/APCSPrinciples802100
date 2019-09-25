@@ -1,34 +1,30 @@
-//start Button class (8/20)
+//Evangeline
+//9/25
+//Button class
 class Button{
-  constructor(x,y,c1,c2,c3){
+  constructor(x,y,w,h,msg,clr){
     this.loc = createVector(x,y);
-    this.w = 70;
-    this.h = 40;
-    this.clr = createVector(c1,c2,c3);
+    this.w = w;
+    this.h = h;
+    this.msg = msg;
+    this.clr = clr;
   }
 
   run(){
-    // console.log("running");
-    this.checkEdges();
-    this.update();
-    this.render();
-
-  }
-
-  checkEdges(){
-
-
-  }
-
-
-  update(){
-
-
+  this.render();
   }
 
   render(){
-    fill(0,50,250);
+    
+    textSize(20);
+    fill(255);
+    text(this.msg,this.loc.x + 15, this.loc.y + 25);
+    fill(this.clr);
     rect(this.loc.x,this.loc.y,this.w,this.h);
 
+
   }
-}// end Button class
+
+
+
+}

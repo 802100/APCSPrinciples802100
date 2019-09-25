@@ -4,10 +4,13 @@
 //this is a coment
 var balls = []
 var paddle;
-var gameState = 3;
-var mode = "easy";
+var gameState = 1;
+var mode;
 var lives = 10;
 var score = 0;
+var btnEasy;
+var btnMed;
+var btnHard;
 
 
 //  The setup function function is called once when your program begins
@@ -17,6 +20,7 @@ function setup() {
   // background(5, 5, 5);
   loadBalls(10);
   loadPaddles();
+  loadButtons();
 
 
 
@@ -41,21 +45,9 @@ function startGame(){
   textSize(50);
   fill(255);
   text("PaddleBall",270,200);
-  //dificulty setting
-  textSize(20);
-  fill(0,50,250);
-  rect(200,600,70,40);
-  fill(255);
-  text("easy",215,625);
-  fill(250,0,250);
-  rect(350,600,70,40);
-  fill(255);
-  text("med",365,625);
-  fill(255,0,0);
-  rect(500,600,70,40);
-  fill(255);
-  text("hard",515,625);
-  //dificulty
+  //difficulty buttons
+  runButtons1();
+  //press button?
   if(mouseIsPressed &&
     mouseX>200 && mouseX<280 &&
     mouseY>600 && mouseY<640){
@@ -87,6 +79,7 @@ function playGame(){
   runBalls();
   runPaddles();
 }
+
 //end game scren
 function endGame(){
   background(50,50,50);
@@ -95,15 +88,8 @@ function endGame(){
   fill(255);
   text("PaddleBall",270,200);
   //new game?
-  textSize(30);
-  fill(250,0,250);
-  rect(190,600,190,50);
-  fill(255);
-  text("New Game",210,635);
-  fill(255,0,0);
-  rect(440,600,80,50);
-  fill(255);
-  text("Quit",450,635);
+  runButtons2();
+  //press button
 
   if(mouseIsPressed &&
     mouseX>190 && mouseX<380 &&
@@ -143,4 +129,23 @@ function loadPaddles(){
 function runPaddles(){
   // console.log("inside runPaddles");
   paddle.run();
+}
+
+function loadButtons(){
+  btnEasy = new Button(200,600,70,40, "easy", color(0,50,250));
+  btnMed = new Button(350,600,70,40, "med", color(250,0,250));
+  btnHard = new Button(500,600,70,40,"hard", color(255,0,0));
+  btnNewGame = new Button(190,600,190,50, "New Game", color(250,0,250));
+  btnQuit = new Button(440,600,80,50, "Quit", color(255,0,0));
+}
+
+function runButtons1(){
+  btnEasy.run()
+  btnMed.run();
+  btnHard.run();
+}
+
+function runButtons2(){
+  btnNewGame.run();
+  btnQuit.run();
 }
