@@ -18,30 +18,24 @@ class Ball{
 
 
   }
-  // function isColliding(){
-  //   if(this.loc.x>paddle.loc.x &&
-  //     this.loc.x<paddle.loc.x + paddle.w &&
-  //     this.loc.y>paddle.loc.y &&
-  //     this.loc.y<paddle.loc.y + paddle.h){
-  //       return true;
-  //     }else{
-  //       return false;
-  //     }
-  //   }
-  checkEdges(){
-    function isColliding(){
-      if(this.loc.x>paddle.loc.x &&
-        this.loc.x<paddle.loc.x + paddle.w &&
-        this.loc.y>paddle.loc.y &&
-        this.loc.y<paddle.loc.y + paddle.h){
-          return true;
-        }else{
-          return false;
-        }
+
+  isColliding(){
+    if(this.loc.x>paddle.loc.x &&
+      this.loc.x<paddle.loc.x + paddle.w &&
+      this.loc.y>paddle.loc.y &&
+      this.loc.y<paddle.loc.y + paddle.h){
+        return true;
+      }else{
+        return false;
       }
-    for(var i = balls.length -1; balls >= 0; i--){
+
+  }
+
+
+  checkEdges(){
+
+    for(var i = balls.length -1; i >= 0; i--){
       if(balls[i].isColliding()){
-        console.log("collision detected");
         score = score + 20;
         balls.splice(i,1)
       }
@@ -64,7 +58,7 @@ class Ball{
   }
 
   update(){
-    
+
 
     this.vel.add(this.acc);
     this.loc.add(this.vel);

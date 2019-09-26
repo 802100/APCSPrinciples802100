@@ -34,6 +34,10 @@ function draw() {
     playGame();
   }else if(gameState === 3){
     endGame();
+  }else if(gameState === 4){
+    winGame();
+  }else if(gameState === 5){
+    loseGame();
   }
 
 }
@@ -78,6 +82,12 @@ function playGame(){
   text("score = " + score,200,20);
   runBalls();
   runPaddles();
+  console.log(balls);
+  if(balls === 0){
+    gameState = 4;
+  }else if(lives === 0){
+    gameState = 5;
+  }
 }
 
 //end game scren
@@ -87,6 +97,9 @@ function endGame(){
   textSize(50);
   fill(255);
   text("PaddleBall",270,200);
+  textSize(20);
+  fill(255);
+  text("Final Score = " + score, 310,400);
   //new game?
   runButtons2();
   //press button
@@ -107,6 +120,32 @@ function endGame(){
 
 }
 
+function winGame(){
+  background(50,50,50);
+  textSize(50);
+  fill(250,0,250);
+  text("YOU WIN", 270,400);
+  textSize(15);
+  fill(255);
+  text("click mouse to continue",300,500);
+  if(mouseIsPressed){
+    gameState = 3;
+  }
+}
+
+function loseGame(){
+  background(50,50,50);
+  textSize(50);
+  fill(250,0,250);
+  text("YOU LOSE", 250,400);
+  textSize(15);
+  fill(255);
+  text("click mouse to continue",300,500);
+  if(mouseIsPressed){
+    gameState = 3;
+  }
+}
+
 
 //load balls
 function loadBalls(n){
@@ -119,8 +158,10 @@ function loadBalls(n){
 function runBalls(){
   for(var i = 0; i < balls.length; i++){
     balls[i].run();
+
   }
 }
+
 
 function loadPaddles(){
   paddle = new Paddle(400,700,100,20);

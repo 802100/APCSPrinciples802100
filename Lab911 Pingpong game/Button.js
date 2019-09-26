@@ -16,11 +16,11 @@ class Button{
 
   render(){
     
+    fill(this.clr);
+    rect(this.loc.x,this.loc.y,this.w,this.h);
     textSize(20);
     fill(255);
     text(this.msg,this.loc.x + 15, this.loc.y + 25);
-    fill(this.clr);
-    rect(this.loc.x,this.loc.y,this.w,this.h);
 
 
   }
