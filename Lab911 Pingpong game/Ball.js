@@ -33,7 +33,7 @@ class Ball{
 
 
   checkEdges(){
-
+    //if colliding with paddle
     for(var i = balls.length -1; i >= 0; i--){
       if(balls[i].isColliding()){
         score = score + 20;
@@ -55,8 +55,7 @@ class Ball{
         this.vel.y = -this.vel.y;
       }
 
-
-
+      
 
   }
 

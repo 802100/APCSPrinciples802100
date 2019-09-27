@@ -13,6 +13,7 @@ var finalScore;
 var btnEasy;
 var btnMed;
 var btnHard;
+var b = 10;
 
 
 //  The setup function function is called once when your program begins
@@ -20,7 +21,7 @@ function setup() {
   var cnv = createCanvas(800, 800);
   cnv.position((windowWidth-width)/2, 30);
   // background(5, 5, 5);
-  loadBalls(10);
+  loadBalls(b);
   loadPaddles();
   loadButtons();
 
@@ -51,8 +52,17 @@ function startGame(){
   background(50,50,50);
   //title
   textSize(50);
+  fill(0,250,0);
+  text("P",270,200);
+  text("B", 430,200);
   fill(255);
-  text("PaddleBall",270,200);
+  text("addle   all",300,200);
+  //instructions
+  textSize(14);
+  fill(255);
+  text("Use the mouse to move the paddle and clear the screen of balls\n" +
+    "Don't let the balls touch the bottom of the screen otherwise you lose a life\n"+
+    "Try and clear the screen with the least ammount of lives lost\n",180,400);
   //difficulty buttons
   runButtons1();
   //press button?
@@ -95,8 +105,10 @@ function playGame(){
   text("score = " + score,200,20);
   runBalls();
   runPaddles();
+  //win game?
   if(score === 200){
     gameState = 4;
+    //lose game
   }else if(lives === 0){
     gameState = 5;
   }
@@ -106,8 +118,11 @@ function endGame(){
   background(50,50,50);
   //title
   textSize(50);
+  fill(0,250,0);
+  text("P",270,200);
+  text("B", 430,200);
   fill(255);
-  text("PaddleBall",270,200);
+  text("addle   all",300,200);
   //final score
   finalScore = score + diffScore + lives*20;
   textSize(20);
@@ -120,7 +135,7 @@ function endGame(){
   //new game?
   runButtons2();
   //press button
-
+  //load title screen
   if(mouseIsPressed &&
     mouseX>190 && mouseX<380 &&
     mouseY>600 && mouseY<650){
@@ -128,6 +143,7 @@ function endGame(){
       gameState = 1;
       lives = 15;
       score = 0;
+      //load quit screen
     }else if(mouseIsPressed &&
       mouseX>440 && mouseX<520 &&
       mouseY>600 && mouseY<650){
@@ -169,7 +185,13 @@ function quitGame(){
   background(50,50,50);
   textSize(70);
   fill(255);
-  text("Thanks For Playing",100,500);
+  text("Thanks For Playing",100,400);
+  textSize(15);
+  fill(255,0,0);
+  text("click mouse to restart",320,500);
+  if(mouseIsPressed){
+        gameState = 1;
+  }
 }
 
 //load balls
