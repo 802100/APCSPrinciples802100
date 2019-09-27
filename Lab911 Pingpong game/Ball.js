@@ -51,8 +51,11 @@ class Ball{
         this.vel.y = -this.vel.y;
       }
       if(this.loc.y > height){
+        lives = lives - 1;
         this.vel.y = -this.vel.y;
       }
+
+
 
 
   }

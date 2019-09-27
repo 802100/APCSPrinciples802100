@@ -6,8 +6,10 @@ var balls = []
 var paddle;
 var gameState = 1;
 var mode;
-var lives = 10;
+var lives = 15;
 var score = 0;
+var diffScore;
+var finalScore;
 var btnEasy;
 var btnMed;
 var btnHard;
@@ -38,6 +40,8 @@ function draw() {
     winGame();
   }else if(gameState === 5){
     loseGame();
+  }else if(gameState === 6){
+    quitGame();
   }
 
 }
@@ -52,22 +56,31 @@ function startGame(){
   //difficulty buttons
   runButtons1();
   //press button?
+  //easy mode
   if(mouseIsPressed &&
     mouseX>200 && mouseX<280 &&
     mouseY>600 && mouseY<640){
       mode = "easy";
+      lives = 15;
+      diffScore = 100;
       gameState = 2;
     }
+    //medium mode
   if(mouseIsPressed &&
     mouseX>350 && mouseX<430 &&
     mouseY>600 && mouseY<640){
       mode = "med";
+      lives = 12;
+      diffSocre = 200;
       gameState = 2;
     }
+    //hard mode
   if(mouseIsPressed &&
     mouseX>500 && mouseX<580 &&
     mouseY>600 && mouseY<640){
       mode = "hard";
+      diffScore = 300;
+      lives = 10;
       gameState = 2;
     }
 
@@ -82,14 +95,12 @@ function playGame(){
   text("score = " + score,200,20);
   runBalls();
   runPaddles();
-  console.log(balls);
-  if(balls === 0){
+  if(score === 200){
     gameState = 4;
   }else if(lives === 0){
     gameState = 5;
   }
 }
-
 //end game scren
 function endGame(){
   background(50,50,50);
@@ -97,9 +108,15 @@ function endGame(){
   textSize(50);
   fill(255);
   text("PaddleBall",270,200);
+  //final score
+  finalScore = score + diffScore + lives*20;
   textSize(20);
   fill(255);
-  text("Final Score = " + score, 310,400);
+  text("Score = " + score, 330,340);
+  text("lives remaining = " + lives,305,370);
+  text("difficulty = " + diffScore,320,400)
+  fill(240,50,0);
+  text("Final Score = " + finalScore, 310,430);
   //new game?
   runButtons2();
   //press button
@@ -107,15 +124,14 @@ function endGame(){
   if(mouseIsPressed &&
     mouseX>190 && mouseX<380 &&
     mouseY>600 && mouseY<650){
+      loadBalls(10);
       gameState = 1;
-      lives = 10;
+      lives = 15;
       score = 0;
     }else if(mouseIsPressed &&
       mouseX>440 && mouseX<520 &&
       mouseY>600 && mouseY<650){
-        textSize(50);
-        fill(255);
-        text("Thanks For Playing",160,400);
+        gameState = 6;
       }
 
 }
@@ -135,9 +151,11 @@ function winGame(){
 
 function loseGame(){
   background(50,50,50);
+  //lose screen
   textSize(50);
   fill(250,0,250);
   text("YOU LOSE", 250,400);
+  //click mouse to set gameState to endGame
   textSize(15);
   fill(255);
   text("click mouse to continue",300,500);
@@ -146,6 +164,13 @@ function loseGame(){
   }
 }
 
+function quitGame(){
+  //thanks for playing screen
+  background(50,50,50);
+  textSize(70);
+  fill(255);
+  text("Thanks For Playing",100,500);
+}
 
 //load balls
 function loadBalls(n){
@@ -176,8 +201,8 @@ function loadButtons(){
   btnEasy = new Button(200,600,70,40, "easy", color(0,50,250));
   btnMed = new Button(350,600,70,40, "med", color(250,0,250));
   btnHard = new Button(500,600,70,40,"hard", color(255,0,0));
-  btnNewGame = new Button(190,600,190,50, "New Game", color(250,0,250));
-  btnQuit = new Button(440,600,80,50, "Quit", color(255,0,0));
+  btnNewGame = new Button(250,600,140,40, "New Game", color(250,0,250));
+  btnQuit = new Button(440,600,70,40, "Quit", color(255,0,0));
 }
 
 function runButtons1(){
