@@ -35,7 +35,12 @@ class Ball{
   checkEdges(){
     //if colliding with paddle
     for(var i = balls.length -1; i >= 0; i--){
-      if(balls[i].isColliding()){
+      if(balls[i].isColliding() && this.vel.y < 0){
+        console.log("collision");
+        lives = lives - 1;
+        loadBalls(b + 3);
+        clear();
+      }else if(balls[i].isColliding()){
         score = score + 20;
         balls.splice(i,1)
       }
@@ -51,11 +56,10 @@ class Ball{
         this.vel.y = -this.vel.y;
       }
       if(this.loc.y > height){
-        lives = lives - 1;
         this.vel.y = -this.vel.y;
       }
 
-      
+
 
   }
 

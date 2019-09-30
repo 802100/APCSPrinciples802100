@@ -13,7 +13,7 @@ var finalScore;
 var btnEasy;
 var btnMed;
 var btnHard;
-var b = 10;
+var b = 5;
 
 
 //  The setup function function is called once when your program begins
@@ -106,7 +106,7 @@ function playGame(){
   runBalls();
   runPaddles();
   //win game?
-  if(score === 200){
+  if(balls.length === 0){
     gameState = 4;
     //lose game
   }else if(lives === 0){
@@ -138,7 +138,7 @@ function endGame(){
   //load title screen
   if(mouseIsPressed &&
     mouseX>190 && mouseX<380 &&
-    mouseY>600 && mouseY<650){
+    mouseY>500 && mouseY<550){
       loadBalls(10);
       gameState = 1;
       lives = 15;
@@ -146,7 +146,7 @@ function endGame(){
       //load quit screen
     }else if(mouseIsPressed &&
       mouseX>440 && mouseX<520 &&
-      mouseY>600 && mouseY<650){
+      mouseY>500 && mouseY<550){
         gameState = 6;
       }
 
@@ -198,7 +198,7 @@ function quitGame(){
 function loadBalls(n){
 
   for(var i = 0; i < n; i++){
-    balls[i] = new Ball(random(width),200,random(-8,8),random(-8,8), i);
+    balls[i] = new Ball(random(width),200,random(-5,5),random(-5,5), i);
   }
 }
 
@@ -223,8 +223,8 @@ function loadButtons(){
   btnEasy = new Button(200,600,70,40, "easy", color(0,50,250));
   btnMed = new Button(350,600,70,40, "med", color(250,0,250));
   btnHard = new Button(500,600,70,40,"hard", color(255,0,0));
-  btnNewGame = new Button(250,600,140,40, "New Game", color(250,0,250));
-  btnQuit = new Button(440,600,70,40, "Quit", color(255,0,0));
+  btnNewGame = new Button(250,500,140,40, "New Game", color(250,0,250));
+  btnQuit = new Button(440,500,70,40, "Quit", color(255,0,0));
 }
 
 function runButtons1(){
