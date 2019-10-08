@@ -1,18 +1,32 @@
-
-
-/*
-**  Square Constructor Function::
-**  eettlin
-**  Sept. 11, 2018
-*/
-
-//  Add perameters to your constructor function
-function Sqr(){
-//  Add instance variables to your constructor Function
-//What does a square need to know about itself??
-
-  this.render = function(){
+// square class (1007)
+//checkerBoard
+class Square{
+  constructor(x,y,d){
+    this.loc = createVector(x,y);
+    this.d = d;
 
   }
 
-}//  End of Square constructor function
+run(){
+  this.update();
+  this.render();
+}
+
+update(){
+
+
+
+}
+
+render(){
+  fill(150,0,150);
+  rect(this.loc.x, this.loc.y, this.d, this.d);
+}
+
+
+
+
+
+
+
+}
