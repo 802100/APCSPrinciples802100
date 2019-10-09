@@ -4,22 +4,15 @@ class Square{
   constructor(x,y,d){
     this.loc = createVector(x,y);
     this.d = d;
-
+    this.clr = color(0);
   }
 
 run(){
-  this.update();
   this.render();
 }
 
-update(){
-  
-
-
-}
-
 render(){
-  fill(150,0,150);
+  fill(this.clr);
   rect(this.loc.x, this.loc.y, this.d, this.d);
 }
 
