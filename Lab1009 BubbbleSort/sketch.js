@@ -9,27 +9,25 @@ function setup() {
   cnv.position((windowWidth-width)/2, 30);
   background(5, 5, 5);
   fill(200, 30, 150);
-//start bubblesort
-  for(var i = 0; i > list.length; i++){
-    console.log("inside i loop");
+  BubbleSort();
+
+}
+//start BubbleSort
+function BubbleSort(){
+  for(var i = 0; i < list.length; i++){
     for(var j = 0; j >= i; j++){
-      console.log("inside j loop");
       if(list[i] < list[i+1]){
-        console.log("inside If-statement");
         var temp = list[i];
         list[i] = list[j];
         list[j] = temp;
       }
     }
-  }//end BubbleSort
+  }
+  console.log(list);
 
-}
-function BubbleSort(){
-
-}
+}//end BubbleSort
 //  The draw function is called @ 30 fps
 function draw() {
-
 
 
 }
