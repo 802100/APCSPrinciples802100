@@ -14,12 +14,13 @@ function setup() {
 
 }
 //start swap
-function Swap()
+function Swap(x,y){
+  temp = list[x];
+  list[x] = list[y];
+  list[y] = temp;
 
 
-
-
-
+}
 
 //start BubbleSort
 function BubbleSort(n){
@@ -29,9 +30,7 @@ function BubbleSort(n){
       console.log("inside j loop");
       if(list[j+1] < list[j]){
         console.log("inside if state");
-        var temp = list[i];
-        list[i] = list[j];
-        list[j] = temp;
+        Swap(i, j);
       }
     }
   }
