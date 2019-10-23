@@ -4,6 +4,8 @@
 //  The setup function function is called once when your program begins
 var list = [9,11,5,3,6];
 var temp;
+var comps = 0;
+var swaps = 0;
 var time = millis();
 function setup() {
   var cnv = createCanvas(800, 800);
@@ -26,16 +28,17 @@ function Swap(x,y){
 //start BubbleSort
 function BubbleSort(n){
   for(var i = 0; i < n-1; i++){
-    console.log("inside i loop");
     for(var j = 0; j < n-1-i; j++){
-      console.log("inside j loop");
+      comps = comps + 1;
       if(list[j+1] < list[j]){
-        console.log("inside if state");
         Swap(i, j);
+        swaps = swaps + 1;
       }
     }
   }
   console.log(list);
+  console.log("compares = "+ comps);
+  console.log("swaps = "+ swaps);
   console.log("time = "+ time);
 
 }//end BubbleSort

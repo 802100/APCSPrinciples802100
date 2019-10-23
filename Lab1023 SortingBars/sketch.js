@@ -1,30 +1,27 @@
 //  Evangeline Viray
-// 1023
+// 1021
 //  This is a comment
 //  The setup function function is called once when your program begins
 var bars = [];
 var temp;
 var swaps = 0;
 var comps = 0;
-var time = millis();
+//var time = millis();
 function setup() {
   var cnv = createCanvas(800, 800);
   cnv.position((windowWidth-width)/2, 30);
-  background(5, 5, 5);
+  background(230);
   fill(200, 30, 150);
   loadBars(1);
   console.log(bars);
-  for(var i = 0; i < squares.length; i++){
-    squares[i].run();
-  }
-  SelectionSort(list.length);
+  SelectionSort(bars.length);
 
 }
 
-//load bars
+//loadBars
 function loadBars(n){
   for(var i = 0; i < n; i++){
-    bars[i] = new Bar(0)
+    bars[i] = new Bar(20)
   }
 }
 
@@ -58,6 +55,8 @@ function SelectionSort(n){
 }//end SelectionSort
 //  The draw function is called @ 30 fps
 function draw() {
-
+  for(var i = 0; i < bars.length; i++){
+    bars[i].run();
+  }
 
 }
