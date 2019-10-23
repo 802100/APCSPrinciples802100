@@ -6,6 +6,7 @@ var list = [];
 var temp;
 var swaps = 0;
 var comps = 0;
+var time = millis();
 function setup() {
   var cnv = createCanvas(800, 800);
   cnv.position((windowWidth-width)/2, 30);
@@ -53,6 +54,7 @@ function SelectionSort(n){
   console.log(list);
   console.log("compares = "+ comps);
   console.log("swaps = "+ swaps);
+  console.log("time = "+ time);
 
 }//end SelectionSort
 //  The draw function is called @ 30 fps

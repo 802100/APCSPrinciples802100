@@ -4,6 +4,7 @@
 //  The setup function function is called once when your program begins
 var list = [9,11,5,3,6];
 var temp;
+var time = millis();
 function setup() {
   var cnv = createCanvas(800, 800);
   cnv.position((windowWidth-width)/2, 30);
@@ -35,6 +36,7 @@ function BubbleSort(n){
     }
   }
   console.log(list);
+  console.log("time = "+ time);
 
 }//end BubbleSort
 //  The draw function is called @ 30 fps
