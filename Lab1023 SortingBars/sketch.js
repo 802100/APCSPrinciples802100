@@ -4,6 +4,7 @@
 //  The setup function function is called once when your program begins
 var bars = [];
 var temp;
+var numBars, barWidth;
 var swaps = 0;
 var comps = 0;
 //var time = millis();
@@ -12,19 +13,39 @@ function setup() {
   cnv.position((windowWidth-width)/2, 30);
   background(230);
   fill(200, 30, 150);
-  loadBars(1);
-  console.log(bars);
-  SelectionSort(bars.length);
 
+  barWidth = 20;
+  numBars = width/barWidth;
+
+  loadBars(numBars);
+  console.log(bars);
 }
+
+//  The draw function is called @ 30 fps
+function draw() {
+  frameRate(1);
+  background(230);
+  runBars();
+//  SelectionSort(bars.length);
+  }
+
 
 //loadBars
 function loadBars(n){
   for(var i = 0; i < n; i++){
-    bars[i] = new Bar(20)
+    var barHeight = Math.floor(random(height));
+    var loc = createVector(i*barWidth, barHeight);
+    bars[i] = new Bar(loc);
   }
 }
 
+//runBars
+function runBars(){
+  for(var i = 0; i < bars.length; i++){
+    bars[i].render();
+
+  }
+}
 //start swap
 function Swap(x,y){
   temp = bars[x];
@@ -40,7 +61,7 @@ function SelectionSort(n){
     var index = i;
     for(var j = i+1; j < n; j++){
       comps = comps+1;
-      if(bars[j] < bars[index]){
+      if(bars[j].h < bars[index].h){
         index = j;
       }
     }
@@ -53,10 +74,3 @@ function SelectionSort(n){
   //console.log("time = "+ time);
 
 }//end SelectionSort
-//  The draw function is called @ 30 fps
-function draw() {
-  for(var i = 0; i < bars.length; i++){
-    bars[i].run();
-  }
-
-}

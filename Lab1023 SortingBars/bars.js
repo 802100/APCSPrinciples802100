@@ -2,17 +2,14 @@
 //checkerBoard
 class Bar{
   constructor(x){
-    this.x = x;
-    this.h = random(0,height);
-    this.clr = color(255,0,0);
+    this.loc = x;
+    this.w = barWidth;
+    this.h = height - this.loc.y;
   }
 
-run(){
-  this.render();
-}
 
 render(){
-  fill(this.clr);
-  rect(this.x, height, 50, this.h);
+  fill(250,0,250);
+  rect(this.loc.x, this.loc.y, this.w, this.h);
 }
 }
