@@ -13,22 +13,20 @@ function setup() {
   cnv.position((windowWidth-width)/2, 30);
   background(230);
   fill(200, 30, 150);
-
   barWidth = 20;
   numBars = width/barWidth;
 
   loadBars(numBars);
-  SelectionSort(bars.length);
-  bars[0].render();
-  bars[1].render();
+  runBars();
   console.log(bars);
 }
 
 //  The draw function is called @ 30 fps
 function draw() {
-  frameRate(1);
-  //background(230);
-  //runBars();
+  frameRate(0.5);
+  background(230);
+  runBars();
+  SelectionSort(bars.length);
   }
 
 
@@ -57,6 +55,15 @@ function Swap(x,y){
 
 }
 
+//function move
+function Move(){
+  for(var i = 0; i < bars.length; i++){
+    bars[i].slide(i);
+  }
+  background(230);
+  runBars();
+}
+
 //start SelectionSort
 function SelectionSort(n){
   for(var i = 0; i < n-1; i++){
@@ -68,6 +75,7 @@ function SelectionSort(n){
       }
     }
     Swap(index, i);
+    Move();
     swaps = swaps+1;
   }
   console.log(bars);
