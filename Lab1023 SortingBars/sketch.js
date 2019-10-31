@@ -18,14 +18,13 @@ function setup() {
 
   loadBars(numBars);
   runBars();
-  console.log(bars);
 }
 
 //  The draw function is called @ 30 fps
 function draw() {
-  frameRate(0.5);
   background(230);
   runBars();
+  frameRate(0.5);
   SelectionSort(bars.length);
   }
 
@@ -78,7 +77,6 @@ function SelectionSort(n){
     Move();
     swaps = swaps+1;
   }
-  console.log(bars);
   console.log("compares = "+ comps);
   console.log("swaps = "+ swaps);
   //console.log("time = "+ time);
