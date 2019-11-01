@@ -15,17 +15,33 @@ class Snake{
   }
 
 checkEdges(){
-
-
+  if(this.loc.x < 0){
+    this.loc.x = -this.loc.x;
+  }
+  if(this.loc.x > width){
+    this.loc.x = 780;
+  }
+  if(this.loc.y <0){
+    this.loc.y = -this.loc.y;
+  }
+  if(this.loc.y > height){
+    this.loc.y = 780;
+  }
 }
+
 
 update(){
   if(keyIsDown(RIGHT_ARROW)){
-    this.vel.x = 20
+    this.vel.x = 20;
   }else if(keyIsDown(LEFT_ARROW)){
-    this.vel.x = -20
+    this.vel.x = -20;
+  }else if(keyIsDown(UP_ARROW)){
+    this.vel.y = -20;
+  }else if(keyIsDown(DOWN_ARROW)){
+    this.vel.y = 20;
   }else{
     this.vel.x = 0;
+    this.vel.y = 0
   }
   this.loc.add(this.vel);
 

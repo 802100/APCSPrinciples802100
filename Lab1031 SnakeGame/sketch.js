@@ -5,6 +5,8 @@
 var score;
 var food = [];
 var snake = [];
+var rowH = 800/20;
+var colW = 800/20;
 function setup() {
   var cnv = createCanvas(800, 800);
   cnv.position((windowWidth-width)/2, 30);
@@ -18,6 +20,7 @@ function setup() {
 
 //  The draw function is called @ 30 fps
 function draw() {
+  frameRate(15);
   background(5, 5, 5);
   runFood();
   runSnake();
@@ -26,19 +29,19 @@ function draw() {
 
 function loadFood(n){
   for(var i = 0; i < n; i++){
-    food[i] = new Food(random(width), random(height));
+    food[i] = new Food(colW*round(random(20)),rowH*round(random(20)));
   }
 }
 
 function runFood(){
   for(var i = 0; i < food.length; i++){
-    food[i].render();
+    food[i].run();
   }
 }
 
 function loadSnake(n){
   for(var i = 0; i<n; i++){
-    snake[i] = new Snake(400,400,0,0);
+    snake[i] = new Snake(colW,rowH,0,0);
   }
 }
 
