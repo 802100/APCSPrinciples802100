@@ -7,6 +7,8 @@ var food = [];
 var snake = [];
 var rowH = 800/20;
 var colW = 800/20;
+var s = 1;
+var p = 0;
 function setup() {
   var cnv = createCanvas(800, 800);
   cnv.position((windowWidth-width)/2, 30);
@@ -14,7 +16,7 @@ function setup() {
   fill(200, 30, 150);
 
   loadFood(5);
-  loadSnake(1);
+  loadSnake(s);
 
 }
 
@@ -41,7 +43,13 @@ function runFood(){
 
 function loadSnake(n){
   for(var i = 0; i<n; i++){
-    snake[i] = new Snake(colW,rowH,0,0);
+    if(i === 0){
+      //snake head
+      snake[i] = new Snake(colW*10,rowH*10,0,0);
+    }else if(i > 0){
+      //snake body
+      snake[i] = new Snake(snake[0].loc.x - 20,snake[0].loc.y,0,0);
+    }
   }
 }
 

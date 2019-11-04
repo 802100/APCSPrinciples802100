@@ -14,7 +14,9 @@ class Snake{
     this.render();
   }
 
+
 checkEdges(){
+
   if(this.loc.x < 0){
     this.loc.x = -this.loc.x;
   }
