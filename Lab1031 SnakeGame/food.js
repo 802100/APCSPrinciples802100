@@ -22,7 +22,6 @@ class Food{
   }
 
   checkEdges(){
-    // console.log("running checkEdges");
     for(var i = food.length-1; i >= 0; i--){
       if(food[i].isColliding()){
         console.log("is colliding");
@@ -30,6 +29,7 @@ class Food{
         p = p+1;
         loadSnake(s+p);
         loadFood(1);
+        score = score + 1;
       }
     }
   }

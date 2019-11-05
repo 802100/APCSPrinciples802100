@@ -2,7 +2,7 @@
 // 	10/31/19
 //  SnakeGame
 //  The setup function function is called once when your program begins
-var score;
+var score = 0;
 var food = [];
 var snake = [];
 var rowH = 800/20;
@@ -15,7 +15,7 @@ function setup() {
   background(5, 5, 5);
   fill(200, 30, 150);
 
-  loadFood(5);
+  loadFood(1);
   loadSnake(s);
 
 }
@@ -24,6 +24,9 @@ function setup() {
 function draw() {
   frameRate(15);
   background(5, 5, 5);
+  textSize(20);
+  fill(255);
+  text("score = " + score,20,20);
   runFood();
   runSnake();
 
@@ -48,7 +51,7 @@ function loadSnake(n){
       snake[i] = new Snake(colW*10,rowH*10,0,0);
     }else if(i > 0){
       //snake body
-      snake[i] = new Snake(snake[0].loc.x - 20,snake[0].loc.y,0,0);
+      snake[i] = new Snake(snake[i-1].loc.x - 20,snake[i-1].loc.y,0,0);
     }
   }
 }

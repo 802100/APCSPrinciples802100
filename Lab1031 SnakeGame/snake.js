@@ -35,12 +35,16 @@ checkEdges(){
 update(){
   if(keyIsDown(RIGHT_ARROW)){
     this.vel.x = 20;
+    this.vel.y = 0;
   }else if(keyIsDown(LEFT_ARROW)){
     this.vel.x = -20;
+    this.vel.y = 0;
   }else if(keyIsDown(UP_ARROW)){
     this.vel.y = -20;
+    this.vel.x = 0;
   }else if(keyIsDown(DOWN_ARROW)){
     this.vel.y = 20;
+    this.vel.x = 0;
   }else{
     this.vel.x = 0;
     this.vel.y = 0
