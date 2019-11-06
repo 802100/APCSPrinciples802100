@@ -13,8 +13,8 @@ class Food{
   }
 
   isColliding(){
-    if(this.loc.x === snake[0].loc.x &&
-      this.loc.y === snake[0].loc.y){
+    if(this.loc.x === snake.head.x &&
+      this.loc.y === snake.head.y){
         return true;
       }else{
         return false;
@@ -25,10 +25,7 @@ class Food{
     for(var i = food.length-1; i >= 0; i--){
       if(food[i].isColliding()){
         console.log("is colliding");
-        food.splice(i,1);
-        p = p+1;
-        loadSnake(s+p);
-        loadFood(1);
+        this.render();
         score = score + 1;
       }
     }
