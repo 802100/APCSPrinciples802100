@@ -22,12 +22,11 @@ class Food{
   }
 
   checkEdges(){
-    for(var i = food.length-1; i >= 0; i--){
-      if(food[i].isColliding()){
-        console.log("is colliding");
-        this.render();
-        score = score + 1;
-      }
+    if(food.isColliding()){
+      console.log("is colliding");
+      snake.loadSegments();
+      
+      score = score + 1;
     }
   }
 

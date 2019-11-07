@@ -14,10 +14,10 @@ class Snake{
   }
 
   run(){
+    this.loadSegments();
     this.checkEdges();
     this.update();
     this.render();
-    this.loadSegments();
   }
 
 
