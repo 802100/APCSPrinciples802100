@@ -24,8 +24,9 @@ class Food{
   checkEdges(){
     if(food.isColliding()){
       console.log("is colliding");
-      snake.loadSegments();
-      
+      //snake.loadSegments();
+      this.loc.x = colW*round(random(20));
+
       score = score + 1;
     }
   }

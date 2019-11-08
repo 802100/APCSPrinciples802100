@@ -24,16 +24,16 @@ class Snake{
 checkEdges(){
 
   if(this.head.x < 0){
-    this.head.x = -this.head.x;
+    gameState = 3;
   }
   if(this.head.x > width){
-    this.head.x = 780;
+    gameState = 3;
   }
   if(this.head.y <0){
-    this.head.y = -this.head.y;
+    gameState = 3;
   }
   if(this.head.y > height){
-    this.head.y = 780;
+    gameState = 3;
   }
 }
 
@@ -58,6 +58,11 @@ update(){
   //update Body
   this.body[0].x = this.head.x;
   this.body[0].y = this.head.y;
+  // for(var i = 0; i<this.body.length; i++){
+  //   this.body[i].x = this.body[i-1].x;
+  //   this.body[i].y = this.body[i-1].y;
+  // }
+
   //update head
   this.head.add(this.vel);
 
