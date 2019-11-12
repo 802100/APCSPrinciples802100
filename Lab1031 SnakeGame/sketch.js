@@ -3,7 +3,7 @@
 //  SnakeGame
 //  The setup function function is called once when your program begins
 var score = 0;
-var gameState = 1;
+var gameState = 2;
 var food;
 var snake;
 var rowH = 800/20;
@@ -35,6 +35,8 @@ function draw() {
 
 //title screen
 function titleScreen(){
+  //setup
+  score = 0
   background(5,5,5);
   //title
   textSize(40);
@@ -45,7 +47,7 @@ function titleScreen(){
   fill(255);
   text("Use the arrow keys to controll the snake and eat the apples to grow \n" +
 "Don't run into your body or the edges of the screen otherwise you lose \n" +
-"Press the Up_Arrow to start the game", 155,400);
+"                      Press the Up_Arrow to start the game", 155,400);
   if(keyCode === 38){
     gameState = 2;
   }
@@ -53,7 +55,7 @@ function titleScreen(){
 
 // play game screen
 function playGame(){
-  frameRate(15);
+  frameRate(10);
   background(5, 5, 5);
   textSize(20);
   fill(255);
@@ -72,6 +74,8 @@ function endGame(){
   fill(255);
   text("press the spacebar to restart",255,400);
   if(keyCode === 32){
+    loadFood();
+    loadSnake();
     gameState = 1;
   }
 
@@ -79,7 +83,7 @@ function endGame(){
 
 // load food in random location
 function loadFood(){
-    food = new Food(colW*round(random(20)),rowH*round(random(20)));
+    food = new Food(colW*Math.floor(random(20)),rowH*Math.floor(random(20)));
 
   }
 // render food in random location
