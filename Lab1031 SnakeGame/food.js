@@ -42,6 +42,7 @@ class Food{
     }
     if(food.appearOnBody()){
       console.log("colliding with body");
+      loadFood();
     }
   }
 

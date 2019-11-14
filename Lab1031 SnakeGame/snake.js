@@ -58,13 +58,13 @@ update(){
     this.vel.x = 0;
   }
   //update Body
-  for(var i = this.body.length-1; i>0; i--){
+  for(var i = this.body.length-1; i>=0; i--){
     this.body[0].x = this.head.x;
     this.body[0].y = this.head.y;
-    if(this.body.length > 0){
-      this.body[i].x = this.body[i-1].x;
-      this.body[i].y = this.body[i-1].y;
-    }
+  }
+  for(var i = this.body.length-1; i>0; i--){
+    this.body[i].x = this.body[i-1].x;
+    this.body[i].y = this.body[i-1].y;
   }
   //update head
   this.head.add(this.vel);
