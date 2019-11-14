@@ -22,6 +22,7 @@ function setup() {
 
 //  The draw function is called @ 30 fps
 function draw() {
+  //title screen load 
   if(gameState === 1){
     titleScreen();
   }else if(gameState === 2){
