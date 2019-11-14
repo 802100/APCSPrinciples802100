@@ -3,7 +3,7 @@
 //  SnakeGame
 //  The setup function function is called once when your program begins
 var score = 0;
-var gameState = 2;
+var gameState = 1;
 var food;
 var snake;
 var rowH = 800/20;
@@ -22,7 +22,6 @@ function setup() {
 
 //  The draw function is called @ 30 fps
 function draw() {
-  //title screen load 
   if(gameState === 1){
     titleScreen();
   }else if(gameState === 2){

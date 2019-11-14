@@ -21,13 +21,27 @@ class Food{
       }
   }
 
+  appearOnBody(){
+    for(var i = snake.body.length -1; i > 0; i--){
+      if(this.loc.x === snake.body[i].x &&
+        this.loc.y === snake.body[i].y){
+          return true;
+        }else{
+          return false;
+        }
+    }
+  }
+
   checkEdges(){
     if(food.isColliding()){
-      console.log("is colliding");
+      //console.log("is colliding");
       snake.loadSegments();
-      this.loc.x = colW*round(random(20));
+      loadFood();
 
       score = score + 1;
+    }
+    if(food.appearOnBody()){
+      console.log("colliding with body");
     }
   }
 

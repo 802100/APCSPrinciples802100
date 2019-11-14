@@ -34,6 +34,12 @@ checkEdges(){
   if(this.head.y > height){
     gameState = 3;
   }
+  for(var i = this.body.length - 1; i > 0; i--){
+    if(this.head.x === this.body[i].x &&
+      this.head.y === this.body[i].y){
+        gameState = 3;
+      }
+  }
 }
 
 
@@ -51,7 +57,6 @@ update(){
     this.vel.y = 20;
     this.vel.x = 0;
   }
-  }
   //update Body
   for(var i = this.body.length-1; i>0; i--){
     this.body[0].x = this.head.x;
@@ -61,7 +66,6 @@ update(){
       this.body[i].y = this.body[i-1].y;
     }
   }
-
   //update head
   this.head.add(this.vel);
 
