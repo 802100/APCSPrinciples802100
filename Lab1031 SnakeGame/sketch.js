@@ -56,7 +56,7 @@ function titleScreen(){
 
 // play game screen
 function playGame(){
-  frameRate(15);
+  frameRate(13);
   background(5, 5, 5);
   //score
   textSize(20);
