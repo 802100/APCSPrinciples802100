@@ -74,10 +74,14 @@ function endGame(){
   textSize(50);
   fill(255,0,0);
   text("You Lose!",270,200);
+  //final score
+  textSize(20);
+  fill(250,0,250);
+  text("final score = " + score,320,400);
   //reset
   textSize(20);
   fill(255);
-  text("press the spacebar to restart",255,400);
+  text("press the spacebar to restart",255,450);
   //reset key
   if(keyCode === 32){
     loadFood();
