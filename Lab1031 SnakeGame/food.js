@@ -11,7 +11,7 @@ class Food{
     this.checkEdges();
     this.render();
   }
-
+// snake eats apple?
   isColliding(){
     if(this.loc.x === snake.head.x &&
       this.loc.y === snake.head.y){
@@ -20,7 +20,7 @@ class Food{
         return false;
       }
   }
-
+// food appears on body?
   appearOnBody(){
     for(var i = snake.body.length -1; i > 0; i--){
       if(this.loc.x === snake.body[i].x &&
@@ -33,13 +33,14 @@ class Food{
   }
 
   checkEdges(){
+    //if food is being eaten - load new food, load new body segment, update score
     if(food.isColliding()){
-      //console.log("is colliding");
       snake.loadSegments();
       loadFood();
 
       score = score + 1;
     }
+    //if food appears on body - reload
     if(food.appearOnBody()){
       console.log("colliding with body");
       loadFood();

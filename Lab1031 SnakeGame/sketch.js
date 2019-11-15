@@ -14,7 +14,7 @@ function setup() {
   cnv.position((windowWidth-width)/2, 30);
   background(5, 5, 5);
   fill(200, 30, 150);
-
+// generate food and snake
   loadFood();
   loadSnake();
 
@@ -48,6 +48,7 @@ function titleScreen(){
   text("Use the arrow keys to controll the snake and eat the apples to grow \n" +
 "Don't run into your body or the edges of the screen otherwise you lose \n" +
 "                      Press the Up_Arrow to start the game", 155,400);
+//start game key
   if(keyCode === 38){
     gameState = 2;
   }
@@ -57,9 +58,11 @@ function titleScreen(){
 function playGame(){
   frameRate(15);
   background(5, 5, 5);
+  //score
   textSize(20);
   fill(255);
   text("score = " + score,20,20);
+  //render the food and snake
   runFood();
   runSnake();
 }
@@ -67,12 +70,15 @@ function playGame(){
 // end game screen
 function endGame(){
   background(5,5,5);
+  //you lose screen
   textSize(50);
   fill(255,0,0);
   text("You Lose!",270,200);
+  //reset
   textSize(20);
   fill(255);
   text("press the spacebar to restart",255,400);
+  //reset key
   if(keyCode === 32){
     loadFood();
     loadSnake();

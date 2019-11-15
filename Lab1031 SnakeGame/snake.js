@@ -8,7 +8,7 @@ class Snake{
     this.clr = color(0,255,0);
     this.body = [];
   }
-
+//new body segment
   loadSegments(){
     this.body.push(createVector(0,0));
   }
@@ -21,7 +21,7 @@ class Snake{
 
 
 checkEdges(){
-
+//if the snake hits the edges of the screen, gamestate = 3
   if(this.head.x < 0){
     gameState = 3;
   }
@@ -33,7 +33,7 @@ checkEdges(){
   }
   if(this.head.y > height){
     gameState = 3;
-  }
+  }//if the snake runs into its own body, gamestate = 3
   for(var i = this.body.length - 1; i > 0; i--){
     if(this.head.x === this.body[i].x &&
       this.head.y === this.body[i].y){
@@ -44,24 +44,28 @@ checkEdges(){
 
 
 update(){
+  // move right
   if(keyIsDown(RIGHT_ARROW)){
     this.vel.x = 20;
     this.vel.y = 0;
+    //move left
   }else if(keyIsDown(LEFT_ARROW)){
     this.vel.x = -20;
     this.vel.y = 0;
+    //move up
   }else if(keyIsDown(UP_ARROW)){
     this.vel.y = -20;
     this.vel.x = 0;
+    //move down
   }else if(keyIsDown(DOWN_ARROW)){
     this.vel.y = 20;
     this.vel.x = 0;
   }
-  //update Body
+  //update body segment 0
   for(var i = this.body.length-1; i>=0; i--){
     this.body[0].x = this.head.x;
     this.body[0].y = this.head.y;
-  }
+  }//update body segments > 0
   for(var i = this.body.length-1; i>0; i--){
     this.body[i].x = this.body[i-1].x;
     this.body[i].y = this.body[i-1].y;
