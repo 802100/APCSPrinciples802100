@@ -70,15 +70,15 @@ function playGame(){
 // end game screen
 function endGame(){
   background(5,5,5);
-  //you lose screen
+  //Game Over text
   textSize(50);
   fill(255,0,0);
-  text("You Lose!",270,200);
+  text("Game Over",270,200);
   //final score
   textSize(20);
   fill(250,0,250);
   text("final score = " + score,320,400);
-  //reset
+  //reset game
   textSize(20);
   fill(255);
   text("press the spacebar to restart",255,450);
