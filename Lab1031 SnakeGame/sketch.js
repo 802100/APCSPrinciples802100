@@ -41,13 +41,15 @@ function titleScreen(){
   //title
   textSize(40);
   fill(0,255,0);
-  text("Snake Game", 260,200);
+  text("Snake Game", 265,200);
   //instructions
   textSize(16);
   fill(255);
-  text("Use the arrow keys to controll the snake and eat the apples to grow \n" +
-"Don't run into your body or the edges of the screen otherwise you lose \n" +
-"                      Press the Up_Arrow to start the game", 155,400);
+  text("                    Use the arrow keys to controll the snake\n" +
+   "                      Eat the apples to grow and earn points \n" +
+   "Don't run into your body or the edges of the screen otherwise you lose", 155,400);
+   fill(250,0,250);
+   text("Press Up_Arrow to start game", 275,500);
 //start game key
   if(keyCode === 38){
     gameState = 2;
@@ -56,7 +58,7 @@ function titleScreen(){
 
 // play game screen
 function playGame(){
-  frameRate(13);
+  frameRate(10);
   background(5, 5, 5);
   //score
   textSize(20);
