@@ -3,20 +3,25 @@
 //  SnakeGame
 //  The setup function function is called once when your program begins
 var score = 0;
+var mode;
 var gameState = 1;
 var food;
 var snake;
 var rowH = 800/20;
 var colW = 800/20;
+var btnEasy;
+var btnMed;
+var btnHard;
 
 function setup() {
   var cnv = createCanvas(800, 800);
   cnv.position((windowWidth-width)/2, 30);
   background(5, 5, 5);
   fill(200, 30, 150);
-// generate food and snake
+// generate food, snake and buttons
   loadFood();
   loadSnake();
+  loadButtons();
 
 }
 
@@ -29,8 +34,8 @@ function draw() {
   }else if(gameState === 3){
     endGame();
   }
-
-
+  //snake controlls
+  snakeControlls();
 }
 
 //title screen
@@ -49,17 +54,45 @@ function titleScreen(){
    "                      Eat the apples to grow and earn points \n" +
    "Don't run into your body or the edges of the screen otherwise you lose", 155,400);
    fill(250,0,250);
-   text("Press Up_Arrow to start game", 275,500);
-//start game key
-  if(keyCode === 38){
-    gameState = 2;
-  }
+   //render buttons
+  runButtons();
+  //easy mode
+  if(mouseIsPressed &&
+    mouseX>200 && mouseX<280 &&
+    mouseY>600 && mouseY<640){
+      mode = "easy";
+      gameState = 2;
+    }
+    //medium mode
+  if(mouseIsPressed &&
+    mouseX>350 && mouseX<430 &&
+    mouseY>600 && mouseY<640){
+      mode = "med";
+      gameState = 2;
+    }
+    //hard mode
+  if(mouseIsPressed &&
+    mouseX>500 && mouseX<580 &&
+    mouseY>600 && mouseY<640){
+      mode = "hard";
+      gameState = 2;
+    }
+
 }
 
 // play game screen
 function playGame(){
-  frameRate(10);
   background(5, 5, 5);
+  //difficulty(frameRate)
+  if(mode === "easy"){
+    frameRate(10);
+  }
+  if(mode === "med"){
+    frameRate(15);
+  }
+  if(mode === "hard"){
+    frameRate(20);
+  }
   //score
   textSize(20);
   fill(255);
@@ -93,6 +126,20 @@ function endGame(){
 
 }
 
+//function load new buttons
+function loadButtons(){
+  btnEasy = new Button(200,600,70,40, "easy", color(0,50,250));
+  btnMed = new Button(350,600,70,40, "med", color(250,0,250));
+  btnHard = new Button(500,600,70,40,"hard", color(255,0,0));
+}
+
+//function run buttons
+function runButtons(){
+  btnEasy.run();
+  btnMed.run();
+  btnHard.run();
+}
+
 // load food in random location
 function loadFood(){
     food = new Food(colW*Math.floor(random(20)),rowH*Math.floor(random(20)));
@@ -110,4 +157,26 @@ function loadSnake(){
 // run snake head
 function runSnake(){
   snake.run();
+}
+
+//snake controlls
+function snakeControlls(){
+  // move right
+  if(keyIsDown(RIGHT_ARROW)){
+    snake.vel.x = 20;
+    snake.vel.y = 0;
+    //move left
+  }else if(keyIsDown(LEFT_ARROW)){
+    snake.vel.x = -20;
+    snake.vel.y = 0;
+    //move up
+  }else if(keyIsDown(UP_ARROW)){
+    snake.vel.y = -20;
+    snake.vel.x = 0;
+    //move down
+  }else if(keyIsDown(DOWN_ARROW)){
+    snake.vel.y = 20;
+    snake.vel.x = 0;
+  }
+
 }

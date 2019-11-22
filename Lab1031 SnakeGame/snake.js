@@ -44,23 +44,6 @@ checkEdges(){
 
 
 update(){
-  // move right
-  if(keyIsDown(RIGHT_ARROW)){
-    this.vel.x = 20;
-    this.vel.y = 0;
-    //move left
-  }else if(keyIsDown(LEFT_ARROW)){
-    this.vel.x = -20;
-    this.vel.y = 0;
-    //move up
-  }else if(keyIsDown(UP_ARROW)){
-    this.vel.y = -20;
-    this.vel.x = 0;
-    //move down
-  }else if(keyIsDown(DOWN_ARROW)){
-    this.vel.y = 20;
-    this.vel.x = 0;
-  }
   //update body segment 0
   for(var i = this.body.length-1; i>=0; i--){
     this.body[0].x = this.head.x;
