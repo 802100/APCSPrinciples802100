@@ -38,7 +38,7 @@ class Food{
       snake.loadSegments();
       loadFood();
 
-      score = score + 1;
+      score = score + 20;
     }
     //if food appears on body - reload
     if(food.appearOnBody()){
